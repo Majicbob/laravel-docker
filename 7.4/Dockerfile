@@ -37,6 +37,8 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     calendar \
     exif \
     gd \
+    iconv \
+	imap \
     intl \
     pdo_mysql \
     pdo_pgsql \
