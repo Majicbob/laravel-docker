@@ -1,5 +1,6 @@
 FROM php:7.4-alpine
 
+
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
     $PHPIZE_DEPS \
@@ -22,6 +23,7 @@ RUN apk add --no-cache \
     icu-libs \
     imagemagick \
     libc-dev \
+	imap-dev \
     libjpeg-turbo-dev \
     libpng-dev \
     libzip-dev \
@@ -59,6 +61,7 @@ RUN docker-php-ext-install \
     exif \
     gd \
     iconv \
+	imap \
     intl \
     mbstring \
     pdo \
