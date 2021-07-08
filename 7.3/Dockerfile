@@ -1,4 +1,4 @@
-FROM php:7.3-alpine
+FROM php:7.3-alpine3.13
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
@@ -28,7 +28,7 @@ RUN apk add --no-cache \
     make \
     mysql-client \
     nodejs \
-    nodejs-npm \
+    npm \
     yarn \
     openssh-client \
     postgresql-libs \
@@ -66,6 +66,7 @@ RUN docker-php-ext-install \
     pdo_pgsql \
     pdo_sqlite \
     pcntl \
+    soap \
     tokenizer \
     xml \
     zip
