@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE: lorisleiva/laravel-docker
+  IMAGE: jtribolet/laravel-docker
 
 jobs:
   docker:
@@ -29,13 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Login to DockerHub
         uses: docker/login-action@v2 
         with:
@@ -49,7 +42,5 @@ jobs:
           push: true
           context: ${{ matrix.php }}
           tags: |
-            ghcr.io/${{ env.IMAGE }}:${{ matrix.tag }}
             ${{ env.IMAGE }}:${{ matrix.tag }}
-          cache-from: type=registry,ref=ghcr.io/${{ env.IMAGE }}:${{ matrix.tag }}
           cache-to: type=inline
